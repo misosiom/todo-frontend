@@ -1,0 +1,31 @@
+.add-todo-form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .add-todo-form input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #2A2A2A;
+    color: white;
+    outline: none;
+  }
+  
+  .add-todo-form button {
+    padding: 10px 16px;
+    background: #4CAF50;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .add-todo-form button:hover {
+    background: #43A047;
+  }
+  
