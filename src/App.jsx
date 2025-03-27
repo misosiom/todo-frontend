@@ -43,9 +43,11 @@ function App() {
 
   return (
     <>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6">To-Do List</Typography>
+      <AppBar position="static" color="primary" >
+        <Toolbar sx = {{ marginLeft: 4, marginRight: 4 }}>
+          <Typography variant="h4" component="div" sx={{ flexGrow: 1, fontWeight: 'bold' }}>
+            To-Do List
+          </Typography>
         </Toolbar>
       </AppBar>
       <Container sx = {{ mariginTop: 4 }}>

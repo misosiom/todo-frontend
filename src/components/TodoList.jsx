@@ -5,7 +5,7 @@ import TodoItem from "./TodoItem";
 
 const TodoList = ({ todos, onToggleComplete, onDelete }) => {
   return (
-    <Paper elevation={3} sx={{ mt: 2 }}>
+    <Paper elevation={0} sx={{ mt: 2 }}>
       <List>
         {todos.map((todo) => (
           <TodoItem
