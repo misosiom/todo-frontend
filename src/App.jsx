@@ -3,6 +3,7 @@ import { getTodos, addTodo, updateTodo, deleteTodo } from "./api";
 import TodoList from "./components/TodoList";
 import AddTodo from "./components/AddTodo";
 import "./styles/App.css";
+import { Toolbar, Typography, AppBar, Container } from "@mui/material";
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -22,7 +23,12 @@ function App() {
   };
 
   const handleToggleComplete = async (id, completed) => {
-    await updateTodo(id, { completed: !completed });
+    const todoToUpdate = todos.find((todo) => todo.id === id);
+    if (!todoToUpdate) return;
+    await updateTodo(id, {
+      title: todoToUpdate.title,
+      completed: !completed,
+    });
     fetchTodos();
   };
 
@@ -36,15 +42,30 @@ function App() {
   };
 
   return (
-    <div className="app">
-      <h1>To-Do List</h1>
-      <AddTodo onAdd={handleAddTodo} />
-      <TodoList
-        todos={todos}
-        onToggleComplete={handleToggleComplete}
-        onDelete={handleDelete}
+    <>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6">To-Do List</Typography>
+        </Toolbar>
+      </AppBar>
+      <Container sx = {{ mariginTop: 4 }}>
+        <AddTodo onAdd={handleAddTodo} />
+        <TodoList
+          todos={todos}
+          onToggleComplete={handleToggleComplete}
+          onDelete={handleDelete}
       />
-    </div>
+      </Container>
+    </>
+    // <div className="app">
+    //   <h1>To-Do List</h1>
+    //   <AddTodo onAdd={handleAddTodo} />
+    //   <TodoList
+    //     todos={todos}
+    //     onToggleComplete={handleToggleComplete}
+    //     onDelete={handleDelete}
+    //   />
+    // </div>
   );
 }
 

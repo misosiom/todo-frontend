@@ -1,19 +1,22 @@
+// TodoList.jsx
 import React from "react";
+import { List, Paper } from "@mui/material";
 import TodoItem from "./TodoItem";
-import "../styles/TodoList.css";
 
 const TodoList = ({ todos, onToggleComplete, onDelete }) => {
   return (
-    <ul className="todo-list">
-      {todos.map((todo) => (
-        <TodoItem
-          key={todo.id}
-          todo={todo}
-          onToggleComplete={onToggleComplete}
-          onDelete={onDelete}
-        />
-      ))}
-    </ul>
+    <Paper elevation={3} sx={{ mt: 2 }}>
+      <List>
+        {todos.map((todo) => (
+          <TodoItem
+            key={todo.id}
+            todo={todo}
+            onToggleComplete={onToggleComplete}
+            onDelete={onDelete}
+          />
+        ))}
+      </List>
+    </Paper>
   );
 };
 

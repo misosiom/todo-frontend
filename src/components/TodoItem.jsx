@@ -1,21 +1,31 @@
 import React from "react";
-import "../styles/TodoItem.css";
+import { ListItem, ListItemText, Checkbox, IconButton } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const TodoItem = ({ todo, onToggleComplete, onDelete }) => {
   return (
-    <li className="todo-item">
-      <span
-        className={todo.completed ? "completed" : ""}
-        onClick={() => onToggleComplete(todo.id, todo.completed)}
-      >
-        {todo.title}
-      </span>
-      <button onClick={() => {
-        console.log("Todo object:", todo);
-        console.log("Deleting ID:", todo?.id);
-        onDelete(todo.id)
-        }}>削除</button>
-    </li>
+    <ListItem
+      secondaryAction={
+        <IconButton edge="end" onClick={() => onDelete(todo.id)}>
+          <DeleteIcon />
+        </IconButton>
+      }
+      disablePadding
+    >
+      <Checkbox
+        checked={todo.completed}
+        onChange={() => onToggleComplete(todo.id, todo.completed)}
+        tabIndex={-1}
+        disableRipple
+      />
+      <ListItemText
+        primary={todo.title}
+        sx={{
+          textDecoration: todo.completed ? "line-through" : "none",
+          color: todo.completed ? "text.secondary" : "text.primary"
+        }}
+      />
+    </ListItem>
   );
 };
 
